@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<meta charset="UTF-8">
+<head th:replace="/layout :: head">
+    <title>List blog</title>
+</head>
+<body>
+<h3>
+    <a th:href="@{/categories/create}">Create Category new</a>
+</h3>
+<p>
+    <a th:href="@{/blog}">
+        Back to customer list
+    </a>
+</p>
+<table id="blogs" >
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Update</th>
+        <th>View</th>
+    </tr>
+    <tr th:each="category, b: ${categories}">
+        <td th:text="*{b.count}"></td>
+        <td th:text="*{category.name}"></td>
+        <td><a th:href="@{/categories/{id}/edit(id=*{category.getId()})}">Update</a></td>
+        <td><a th:href="@{/categories/{id}/view(id=*{category.getId()})}">View</a></td>
+    </tr>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
